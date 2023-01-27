@@ -154,7 +154,7 @@ namespace ams::controller {
 
     void WiiController::MapCoreButtons(const WiiButtonData *buttons) {
         if (m_orientation == WiiControllerOrientation_Horizontal) {            
-            // NOTE: When wiimote is im horizontal position:
+            // NOTE: When wiimote is in horizontal position:
             // DPAD_LEFT is down
             // DPAD_RIGHT is up
             // DPAD_DOWN is right
