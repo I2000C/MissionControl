@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2020-2022 ndeadly
+ * Copyright (c) 2020-2023 ndeadly
  *
  * This program is free software; you can redistribute it and/or modify it
  * under the terms and conditions of the GNU General Public License,
@@ -31,30 +31,30 @@ namespace ams::controller {
     };
 
     struct LanShenStickData {
-        uint8_t x;
-        uint8_t y;
+        u8 x;
+        u8 y;
     } __attribute__ ((__packed__));
 
     struct LanShenButtonData {
-        uint8_t dpad;
+        u8 dpad;
 
-        uint8_t A       : 1;
-        uint8_t B       : 1;
-        uint8_t         : 1;
-        uint8_t X       : 1;
-        uint8_t Y       : 1;
-        uint8_t         : 1;
-        uint8_t L1      : 1;
-        uint8_t R1      : 1;
+        u8 A     : 1;
+        u8 B     : 1;
+        u8       : 1;
+        u8 X     : 1;
+        u8 Y     : 1;
+        u8       : 1;
+        u8 L1    : 1;
+        u8 R1    : 1;
 
-        uint8_t L2      : 1;
-        uint8_t R2      : 1;
-        uint8_t         : 1;
-        uint8_t start   : 1;
-        uint8_t         : 1;
-        uint8_t L3      : 1;
-        uint8_t R3      : 1;
-        uint8_t         : 1;
+        u8 L2    : 1;
+        u8 R2    : 1;
+        u8       : 1;
+        u8 start : 1;
+        u8       : 1;
+        u8 L3    : 1;
+        u8 R3    : 1;
+        u8       : 1;
 
     } __attribute__ ((__packed__));
 
@@ -62,17 +62,17 @@ namespace ams::controller {
         LanShenStickData left_stick;
         LanShenStickData right_stick;
         LanShenButtonData buttons;
-        uint8_t _unk[4];
+        u8 _unk[4];
     } __attribute__ ((__packed__));
 
     struct LanShenReportData {
-        uint8_t id;
+        u8 id;
         union {
             LanShenInputReport0x01 input0x01;
         };
-    } __attribute__((packed));
+    } PACKED;
 
-    class LanShenController : public EmulatedSwitchController {
+    class LanShenController final : public EmulatedSwitchController {
 
         public:
             static constexpr const HardwareID hardware_ids[] = {
@@ -81,8 +81,6 @@ namespace ams::controller {
 
             LanShenController(const bluetooth::Address *address, HardwareID id)
             : EmulatedSwitchController(address, id) { }
-
-            bool SupportsSetTsiCommand() { return false; }
 
             void ProcessInputData(const bluetooth::HidReport *report) override;
 

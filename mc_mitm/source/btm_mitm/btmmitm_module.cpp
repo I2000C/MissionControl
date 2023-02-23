@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2020-2022 ndeadly
+ * Copyright (c) 2020-2023 ndeadly
  *
  * This program is free software; you can redistribute it and/or modify it
  * under the terms and conditions of the GNU General Public License,
@@ -82,7 +82,7 @@ namespace ams::mitm::btm {
         os::SetThreadNamePointer(&g_thread, "mc::BtmMitmThread");
         os::StartThread(&g_thread);
 
-        return ams::ResultSuccess();
+        R_SUCCEED();
     }
 
     void WaitFinished() {

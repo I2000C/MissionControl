@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2020-2022 ndeadly
+ * Copyright (c) 2020-2023 ndeadly
  *
  * This program is free software; you can redistribute it and/or modify it
  * under the terms and conditions of the GNU General Public License,
@@ -73,7 +73,7 @@ namespace ams::bluetooth::hid {
 
         g_data_read_event.Signal();
 
-        return ams::ResultSuccess();
+        R_SUCCEED();
     }
 
     inline void HandleConnectionStateEventV1(bluetooth::HidEventInfo *event_info) {
